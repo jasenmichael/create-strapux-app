@@ -13,7 +13,7 @@ async function install() {
     if (process.argv[3] === '--freshy-install' && fs.existsSync(projectDir)) {
         // ----todo--- prompt to delete
         console.log(`deleting and reinstalling ${projectName}`)
-        await execShellCommand(`rm -rf ${projectDir}`)
+        await runBashCommand(`rm -rf ${projectDir}`)
     }
     // check project-name passed
     if (process.argv[2]) {
@@ -23,8 +23,6 @@ async function install() {
             if (!fs.existsSync(projectDir)) {
                 console.log('Creating Strapux project in', projectDir)
                 // clone strapux repo in and create project-directory
-                // const cloneStrapuxRepo = `${workingDir}/bin/clone-repo.sh
-                console.log(`cloning ${strapuxRepo} "in" ${projectName}`)
                 const command = `git clone ${strapuxRepo} ${projectName}`
                 await runBashCommand(command)
                 console.log('\r\n', 'Strapux cloned - now creating project..')
@@ -57,15 +55,15 @@ async function runBashCommand(cmd) {
     child_process.execSync(cmd)
 }
 
-function execShellCommand(cmd) {
-    const exec = require('child_process').exec
-    console.log('running shell command script -', cmd, '\r\n')
-    return new Promise((resolve, reject) => {
-        exec(cmd, (error, stdout, stderr) => {
-            if (error) {
-                console.warn(error)
-            }
-            resolve(stdout ? stdout : stderr)
-        })
-    })
-}
+// function execShellCommand(cmd) {
+//     const exec = require('child_process').exec
+//     console.log('running shell command script -', cmd, '\r\n')
+//     return new Promise((resolve, reject) => {
+//         exec(cmd, (error, stdout, stderr) => {
+//             if (error) {
+//                 console.warn(error)
+//             }
+//             resolve(stdout ? stdout : stderr)
+//         })
+//     })
+// }
