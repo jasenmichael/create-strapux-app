@@ -27,7 +27,7 @@ async function install() {
                 await runBashCommand(command)
                 console.log('\r\n', 'Strapux cloned - now creating project..')
                 const strapuxCli = `${projectDir}/bin/cli.js`
-                await runBashScript(strapuxCli, ["--install-from-npx"])
+                await runBashScript(strapuxCli, [projectName, "--install-from-npx"])
                 process.exit(0)
             } else { // project-directory exists, exit.
                 console.log('project diretory', `"${projectName}"`, 'exists')
