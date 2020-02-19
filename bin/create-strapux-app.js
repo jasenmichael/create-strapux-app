@@ -23,8 +23,10 @@ async function install() {
             if (!fs.existsSync(projectDir)) {
                 console.log('Creating Strapux project in', projectDir)
                 // clone strapux repo in and create project-directory
-                const cloneStrapuxRepo = `${workingDir}/bin/clone-repo.sh`
-                await runBashScript(cloneStrapuxRepo, [strapuxRepo, projectDir])
+                // const cloneStrapuxRepo = `${workingDir}/bin/clone-repo.sh
+                console.log(`cloning ${strapuxRepo} "in" ${projectName}`)
+                const command = `git clone ${strapuxRepo} ${projectName}`
+                await runBashCommand(command)
                 console.log('\r\n', 'Strapux cloned - now creating project..')
                 const strapuxCli = `${projectDir}/bin/cli.js`
                 await runBashScript(strapuxCli, ["--install"])
@@ -50,10 +52,10 @@ async function runBashScript(script, args) {
     })
 }
 
-// async function runBashCommand(cmd) {
-//     console.log(cmd)
-//     child_process.execSync(cmd)
-// }
+async function runBashCommand(cmd) {
+    console.log(cmd)
+    child_process.execSync(cmd)
+}
 
 function execShellCommand(cmd) {
     const exec = require('child_process').exec
