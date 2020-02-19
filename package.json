@@ -1,0 +1,15 @@
+{
+  "name": "create-strapux-app",
+  "version": "1.0.0",
+  "description": "create strapux app",
+  "main": "bin/create-strapux-app.js",
+  "scripts": {},
+  "bin": "./bin/create-strapux-app.js",
+  "author": "jasenmichael",
+  "license": "ISC",
+  "repository": "github:jasenmichael/create-strapux-app",
+  "dependencies": {
+    "valid-filename": "^3.1.0",
+    "write-json-file": "^4.3.0"
+  }
+}
