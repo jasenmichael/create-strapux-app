@@ -45,14 +45,12 @@ async function install() {
 install()
 
 async function runBashScript(script, args) {
-    console.log('running bash script -', script, args.join(' '), '\r\n')
     child_process.execFileSync(script, args, {
         stdio: 'inherit'
     })
 }
 
 async function runBashCommand(cmd) {
-    console.log(cmd)
     child_process.execSync(cmd)
 }
 
