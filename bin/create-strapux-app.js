@@ -1,37 +1,37 @@
 #!/usr/bin/env node
 
-const child_process = require('child_process')
+// const child_process = require('child_process')
 const fs = require("fs")
 const validFilename = require('valid-filename')
+const execa = require('execa');
 
-const strapuxRepo = "https://github.com/jasenmichael/strapux.git"
 const workingDir = process.cwd()
 const projectName = process.argv[2]
 const projectDir = `${workingDir}/${projectName}`
+const argv = process.argv.slice('2')
 
-async function install() {
-    if (process.argv[3] === '--freshy-install' && fs.existsSync(projectDir)) {
+console.log('workingDir', workingDir)
+console.log('projectName', projectName)
+console.log('projectDir', projectDir)
+console.log('argv', argv)
+
+async function init() {
+    if (argv[1] === '--freshy-install' && fs.existsSync(projectDir)) {
         // ----todo--- prompt to delete
         console.log(`deleting and reinstalling ${projectName}`)
-        await runBashCommand(`rm -rf ${projectDir}`)
+        // await child_process.execSync(`rm -rf ${projectDir}`)
+        await execa.command(`rm -rf ${projectDir}`)
     }
-    // check project-name passed
-    if (process.argv[2]) {
-        // check if project-directory is a valid filename
-        if (validFilename(projectName)) {
-            // check if project-directory not exist, and clone
+    if (argv[0]) { // check project-name passed
+        if (validFilename(projectName)) { // check if project-name is a valid filename
+            // check if project-name not exist, create and install
             if (!fs.existsSync(projectDir)) {
                 console.log('Creating Strapux project in', projectDir)
-                // clone strapux repo in and create project-directory
-                const command = `git clone ${strapuxRepo} ${projectName}`
-                await runBashCommand(command)
-                console.log('\r\n', 'Strapux cloned - now creating project..')
-                const strapuxCli = `${projectDir}/bin/cli.js`
-                await runBashScript(strapuxCli, [projectName, "--install-from-npx"])
-                runBashCommand('rm -rf package-lock.json')
+                await createStrapuxApp(projectDir)
                 process.exit(0)
             } else { // project-directory exists, exit.
                 console.log('project diretory', `"${projectName}"`, 'exists')
+                process.exit(0)
             }
         } else { // invalid project-directory filename
             console.log('invalid directory name')
@@ -42,27 +42,25 @@ async function install() {
         process.exit(1)
     }
 }
-install()
+init()
 
-async function runBashScript(script, args) {
-    child_process.execFileSync(script, args, {
+async function createStrapuxApp(path) {
+    console.log(path)
+    await execa.command(`mkdir ${path}`)
+    await runBashCommand('npm init -y', path)
+    await runBashCommand('npm i /home/me/dev/new-strapux', path)
+    // await runBashCommand('npm i github:jasenmichael/strapux', path)
+    await runBashCommand(`node_modules/.bin/strapux install ${path}`, path)
+}
+
+
+async function runBashCommand(command, cwd) {
+    cmd = command.split(' ')[0]
+    args = command.split(' ').splice(1)
+    console.log(cmd)
+    console.log(args)
+    await execa(cmd, args, {
+        cwd,
         stdio: 'inherit'
     })
 }
-
-async function runBashCommand(cmd) {
-    child_process.execSync(cmd)
-}
-
-// function execShellCommand(cmd) {
-//     const exec = require('child_process').exec
-//     console.log('running shell command script -', cmd, '\r\n')
-//     return new Promise((resolve, reject) => {
-//         exec(cmd, (error, stdout, stderr) => {
-//             if (error) {
-//                 console.warn(error)
-//             }
-//             resolve(stdout ? stdout : stderr)
-//         })
-//     })
-// }

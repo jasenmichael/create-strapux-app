@@ -4,12 +4,22 @@
   "description": "create strapux app",
   "main": "bin/create-strapux-app.js",
   "scripts": {},
-  "bin": "./bin/create-strapux-app.js",
+  "bin": {
+    "create-strapux-app": "bin/create-strapux-app.js"
+  },
   "author": "jasenmichael",
   "license": "ISC",
-  "repository": "github:jasenmichael/create-strapux-app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasenmichael/create-strapux-app.git"
+  },
   "dependencies": {
+    "execa": "^4.0.0",
     "valid-filename": "^3.1.0",
-    "write-json-file": "^4.3.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jasenmichael/create-strapux-app/issues"
+  },
+  "homepage": "https://github.com/jasenmichael/create-strapux-app#readme",
+  "devDependencies": {}
 }
