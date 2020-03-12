@@ -17,7 +17,7 @@
     "chalk": "^3.0.0",
     "execa": "^4.0.0",
     "inquirer": "^7.0.6",
-    "strapux": "file:../new-strapux",
+    "strapux": "github:jasenmichael/strapux",
     "valid-filename": "^3.1.0"
   },
   "bugs": {
