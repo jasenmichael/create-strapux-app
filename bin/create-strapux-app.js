@@ -24,8 +24,8 @@ async function init() {
     if (argv[0] === ('-h' || '--help') || argv[1] === ('-h' || '--help')) {
         // await runBashCommand(`node_modules/.bin/strapux create-strapux-app --help`, workingDir, false)
 
-        // console.log(process.argv[1])
-        // console.log(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux create-strapux-app`))
+        console.log('@@@@@@@@@@', process.argv[1])
+        console.log('@@@@@@@@@@',process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux create-strapux-app`))
         await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --help`), workingDir, false)
         process.exit(0)
     }
