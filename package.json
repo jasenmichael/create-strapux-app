@@ -14,8 +14,11 @@
     "url": "git+https://github.com/jasenmichael/create-strapux-app.git"
   },
   "dependencies": {
+    "chalk": "^3.0.0",
     "execa": "^4.0.0",
-    "valid-filename": "^3.1.0",
+    "inquirer": "^7.0.6",
+    "strapux": "file:../new-strapux",
+    "valid-filename": "^3.1.0"
   },
   "bugs": {
     "url": "https://github.com/jasenmichael/create-strapux-app/issues"
