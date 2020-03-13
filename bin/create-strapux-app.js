@@ -106,8 +106,8 @@ async function createStrapuxApp(path, options) {
         process.exit(0)
     } catch (err) {
         console.log(`\r\n${chalk.red("ERROR")}: ${err}\r\n${chalk.red.bold('x')} Failed to create Strapux Project`)
-        console.log(`Deleting setup files`)
-        await runBashCommand(`rm -rf ${path}`).catch(async () => await runBashCommand(`rm -rf ${path}`).catch())
+        // console.log(`Deleting setup files`)
+        // await runBashCommand(`rm -rf ${path}`).catch(async () => await runBashCommand(`rm -rf ${path}`).catch())
     }
 }
 
