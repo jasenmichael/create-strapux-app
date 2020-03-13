@@ -25,4 +25,4 @@ or
 
 ```
 
-more info at https://github.com/jasenmichael/strapux/blob/master/README.md
+more info at https://github.com/jasenmichael/create-strapux-app/blob/master/README.md
