@@ -36,7 +36,7 @@ Options:
 Commands:
   create-strapux-app <path> [options]  if no path provided use current directory.
 or
-  npx github:jasenmichael/create-strapux-app <path> [options]
+  npx create-strapux-app <path> [options]
         `)
         process.exit(0)
     }
@@ -95,7 +95,7 @@ async function createStrapuxApp(path, options) {
 
     try {
         await runBashCommand('npm init -y', path, true) // init strapux
-        await runBashCommand('npm i github:jasenmichael/strapux', path, true) // get strapux pkg
+        await runBashCommand('npm i strapux', path, true) // get strapux pkg
 
         options = JSON.stringify(options)
         await runBashCommand(`node_modules/strapux/bin/strapux-cli.js install ${path} ${options}`, path, false) // install strapux
