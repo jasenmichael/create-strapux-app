@@ -27,6 +27,7 @@ async function init() {
         console.log('@@@@@@@@@@', process.argv[1])
         console.log('@@@@@@@@@@',process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux create-strapux-app`))
         await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --help`), workingDir, false)
+        await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --help`), workingDir, false)
         process.exit(0)
     }
     if (argv[0] === ('-V' || '-v' || '--version') || argv[1] === ('-V' || '-v' || '--version')) {
@@ -96,7 +97,8 @@ async function createStrapuxApp(path, options) {
         // install strapux
         options = JSON.stringify(options)
         // console.log(``, command, options)
-        await runBashCommand(`node_modules/.bin/strapux install ${path} ${options}`, path, false)
+        // await runBashCommand(`node_modules/.bin/strapux install ${path} ${options}`, path, false)
+        await runBashCommand(`node_modules/strapux/bin/strapux-cli.js install ${path} ${options}`, path, false)
         console.log(`\r\n✨ Sucessfully installed Strapux!`)
         console.log(``)
         if (path !== workingDir) {
