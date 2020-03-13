@@ -17,27 +17,39 @@ const projectName = argv[0]
 const projectDir = `${workingDir}/${projectName}`
 
 async function init() {
+    // console.log(process.argv)
+    // console.log(argv)
     const options = {}
-    // console.log('process.argv', process.argv)
-    // console.log('argv', argv)
     // check if --freshy-install passed, and delete path
-    if (argv[0] === ('-h' || '--help') || argv[1] === ('-h' || '--help')) {
+    if (argv.includes('-h') || argv.includes('--help')) {
         // await runBashCommand(`node_modules/.bin/strapux create-strapux-app --help`, workingDir, false)
-        await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --help`), workingDir, false)
-        await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --help`), workingDir, false)
+        // await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --help`), workingDir, false)
+        console.log(`
+Usage: create-strapux-app install <path>
+
+Options:
+  --oneclick            one click install
+  --freshy-install      WARNING deletes path directory before installing
+  -V, -v, --version     output the version number
+  -h, --help            output usage information
+
+Commands:
+  create-strapux-app <path> [options]  if no path provided use current directory.
+or
+  npx github:jasenmichael/create-strapux-app <path> [options]
+        `)
         process.exit(0)
     }
-    if (argv[0] === ('-V' || '-v' || '--version') || argv[1] === ('-V' || '-v' || '--version')) {
-        await runBashCommand(process.argv[1].replace(`bin/create-strapux-app.js`, `node_modules/.bin/strapux --version`), workingDir, false)
-        // await runBashCommand(`node_modules/.bin/strapux create-strapux-app --version`, projectDir, false)
+    if (argv.includes('-v') || argv.includes('-V') || argv.includes('--version')) {
+        console.log(`1.0.0`)
         process.exit(0)
     }
-    if (argv[1] || argv[2] === '--freshy-install' && fs.existsSync(projectDir)) {
+    if (argv.includes('--freshy-install') && projectDir != process.cwd() && fs.existsSync(projectDir)) {
         console.log(`Deleting and reinstalling ${projectName}`)
         await execa.command(`rm -rf ${projectDir}`)
     }
     // check if --oneclick passed, and add to options
-    if (argv[1] === '--oneclick' || argv[2] === '--oneclick') {
+    if (argv.includes('--oneclick')) {
         console.clear()
         console.log(`One Click mode selected, sit back and roll one..`)
         options.oneclick = true
@@ -50,10 +62,8 @@ async function init() {
     }
     if (argv[0]) { // check project-name passed
         if (validFilename(projectName) && !argv[0].includes('-')) { // check if project-name is a valid filename
-            // check if project-name not exist, create and install
-            if (!fs.existsSync(projectDir)) {
-                // console.log('Creating Strapux project in', projectDir)
-                await createStrapuxApp(projectDir, options)
+            if (!fs.existsSync(projectDir)) { // check if project-name not exist, create and install
+                await createStrapuxApp(projectDir, options) // console.log('Creating Strapux project in', projectDir)
             } else { // project-directory exists, exit.
                 console.log('Project diretory', `"${projectName}"`, 'exists')
             }
@@ -84,18 +94,11 @@ async function createStrapuxApp(path, options) {
     }
 
     try {
-        // init strapux
-        await runBashCommand('npm init -y', path, true)
+        await runBashCommand('npm init -y', path, true) // init strapux
+        await runBashCommand('npm i github:jasenmichael/strapux', path, true) // get strapux pkg
 
-        // get strapux pkg
-        // await runBashCommand('npm i /home/me/dev/new-strapux', path, true)
-        await runBashCommand('npm i github:jasenmichael/strapux', path, true)
-
-        // install strapux
         options = JSON.stringify(options)
-        // console.log(``, command, options)
-        // await runBashCommand(`node_modules/.bin/strapux install ${path} ${options}`, path, false)
-        await runBashCommand(`node_modules/strapux/bin/strapux-cli.js install ${path} ${options}`, path, false)
+        await runBashCommand(`node_modules/strapux/bin/strapux-cli.js install ${path} ${options}`, path, false) // install strapux
         console.log(`\r\n✨ Sucessfully installed Strapux!`)
         console.log(``)
         if (path !== workingDir) {
@@ -110,13 +113,10 @@ async function createStrapuxApp(path, options) {
     }
 }
 
-// runBashCommand(command:string, command-working-dir:string, show-output:boolean)
 async function runBashCommand(command, cwd = workingDir, hide = false) {
     hide = hide ? 'ignore' : 'inherit'
     cmd = command.split(' ')[0]
     args = command.split(' ').splice(1)
-    // console.log(cmd)
-    // console.log(args)
     return await execa(cmd, args, {
         cwd,
         stdio: hide
