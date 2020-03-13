@@ -94,9 +94,8 @@ async function createStrapuxApp(path, options) {
         // install strapux
         options = JSON.stringify(options)
         // console.log(``, command, options)
-        console.log('path========================', path)
-        await runBashCommand(`node_modules/.bin/strapux install ${path} ${options}`, path, false)
-        // await runBashCommand(`node_modules/strapux/bin/strapux-cli.js install ${path} ${options}`, path, false)
+        // await runBashCommand(`node_modules/.bin/strapux install ${path} ${options}`, path, false)
+        await runBashCommand(`node_modules/strapux/bin/strapux-cli.js install ${path} ${options}`, path, false)
         console.log(`\r\n✨ Sucessfully installed Strapux!`)
         console.log(``)
         if (path !== workingDir) {
@@ -106,8 +105,8 @@ async function createStrapuxApp(path, options) {
         process.exit(0)
     } catch (err) {
         console.log(`\r\n${chalk.red("ERROR")}: ${err}\r\n${chalk.red.bold('x')} Failed to create Strapux Project`)
-        // console.log(`Deleting setup files`)
-        // await runBashCommand(`rm -rf ${path}`).catch(async () => await runBashCommand(`rm -rf ${path}`).catch())
+        console.log(`Deleting setup files`)
+        await runBashCommand(`rm -rf ${path}`).catch(async () => await runBashCommand(`rm -rf ${path}`).catch())
     }
 }
 
