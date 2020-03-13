@@ -1,5 +1,8 @@
-# Strapux installer
+# Create Strapux App
 ## create-strapux-app
+
+more info about Strapux at https://github.com/jasenmichael/strapux
+
 To create a Strapux app using npx
 ```bash 
 npx create-strapux-app <my-strapux-project>
@@ -21,8 +24,17 @@ Options:
 Commands:
   create-strapux-app <path> [options]  if no path provided use current directory.
 or
-  npx github:jasenmichael/create-strapux-app <path> [options]
+  npx create-strapux-app <path> [options]
 
 ```
 
-more info at https://github.com/jasenmichael/create-strapux-app/blob/master/README.md
+https://github.com/jasenmichael/create-strapux-app
+
+https://www.npmjs.com/package/create-strapux-app
+
+https://github.com/jasenmichael/strapux
+
+https://www.npmjs.com/package/strapux
+
+Documentation soon...
+Contribution welcome :)
