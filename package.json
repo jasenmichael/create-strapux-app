@@ -1,7 +1,7 @@
 {
   "name": "create-strapux-app",
-  "version": "1.0.0",
-  "description": "create strapux app",
+  "version": "1.0.1",
+  "description": "wire up a Nuxt and Strapi app.",
   "main": "bin/create-strapux-app.js",
   "scripts": {},
   "bin": {
