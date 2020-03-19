@@ -29,6 +29,11 @@ const cwd = process.cwd()
                     process.exit(1)
                 }
             }
+            console.clear()
+            if (options.oneclick) {
+                console.log(`Oneclick passed, sit back and roll one...`)
+            }
+            console.log(`✨ Installing Strapux App!`)
             create(path, options)
         })
     program.parse(process.argv)
