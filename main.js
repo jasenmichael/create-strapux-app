@@ -11,7 +11,7 @@ module.exports = {
         }
 
         // if dirExist, check dir empty
-        if (!options.freshyInstall) {
+        if (!options.freshyInstall && path !== process.cwd()) {
             const dirEmpty = fs.readdirSync(path).length === 0
 
             console.log('dirEmpty', dirEmpty)
