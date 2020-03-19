@@ -27,7 +27,7 @@ module.exports = {
             })
         }
 
-        console.log('init strapux project')
+        console.log('Initiate Strapux app')
         await execa.command(`npm init -y`, {
             stdio: 'ignore',
             cwd: path

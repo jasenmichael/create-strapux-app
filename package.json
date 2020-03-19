@@ -3,7 +3,7 @@
   "bin": {
     "create-strapux-app": "./bin/create-strapux-app.js"
   },
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Nuxt Strapi scaffolding tool",
   "main": "main.js",
   "scripts": {},
