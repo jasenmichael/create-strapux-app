@@ -1,27 +1,18 @@
 {
   "name": "create-strapux-app",
-  "version": "1.0.3",
-  "description": "wire up a Nuxt and Strapi app.",
-  "main": "bin/create-strapux-app.js",
-  "scripts": {},
   "bin": {
-    "create-strapux-app": "bin/create-strapux-app.js"
+    "create-strapux-app": "./bin/create-strapux-app.js"
   },
-  "author": "jasenmichael",
+  "version": "1.1.0",
+  "description": "Nuxt Strapi scaffolding tool",
+  "main": "./bin/create-strapux-app.js",
+  "scripts": {},
+  "author": "",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jasenmichael/create-strapux-app.git"
-  },
   "dependencies": {
-    "chalk": "^3.0.0",
+    "commander": "^4.1.1",
     "execa": "^4.0.0",
-    "inquirer": "^7.0.6",
-    "valid-filename": "^3.1.0"
-  },
-  "bugs": {
-    "url": "https://github.com/jasenmichael/create-strapux-app/issues"
-  },
-  "homepage": "https://github.com/jasenmichael/create-strapux-app#readme",
-  "devDependencies": {}
+    "rimraf": "^3.0.2",
+    "rmfr": "^2.0.0"
+  }
 }
