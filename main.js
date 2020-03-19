@@ -14,14 +14,14 @@ module.exports = {
         if (!options.freshyInstall && dirExist) {
             const dirEmpty = fs.readdirSync(path).length === 0
 
-            console.log('dirEmpty', dirEmpty)
+            // console.log('dirEmpty', dirEmpty)
             if (!dirEmpty) {
                 console.log('Path not empty, exiting')
                 process.exit(1)
             }
         } else {
             // create path dir
-            console.log('create path')
+            console.log(`Re-creating dir ${path}`)
             await execa.command(`mkdir ${path}`, {
                 stdio: 'ignore',
             })
@@ -29,11 +29,11 @@ module.exports = {
 
         console.log('init strapux project')
         await execa.command(`npm init -y`, {
-            stdio: 'inherit',
+            stdio: 'ignore',
             cwd: path
         })
         await execa.command(`npm i strapux`, {
-            stdio: 'inherit',
+            stdio: 'ignore',
             cwd: path
         }).then(() => {
             // create(path)

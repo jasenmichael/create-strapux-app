@@ -18,10 +18,10 @@ const cwd = process.cwd()
         .usage('[path] [options]')
         .description('if no path provided uses current directory.')
         .action(async (options) => {
-            console.log(options.args[0])
+            // console.log(options.args[0])
             const path = options.args[0] ? cwd + '/' + options.args[0] : cwd
-            console.log('cwd', cwd)
-            console.log('path', path)
+            // console.log('cwd', cwd)
+            // console.log('path', path)
             if (path === cwd) {
                 const dirEmpty = await fs.readdirSync(cwd).length === 0
                 if (!dirEmpty) {
