@@ -5,7 +5,7 @@
   },
   "version": "1.1.1",
   "description": "Nuxt Strapi scaffolding tool",
-  "main": "./bin/create-strapux-app.js",
+  "main": "main.js",
   "scripts": {},
   "author": "",
   "license": "ISC",

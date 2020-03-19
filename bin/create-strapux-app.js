@@ -20,7 +20,8 @@ const cwd = process.cwd()
         .action(async (options) => {
             console.log(options.args[0])
             const path = options.args[0] ? cwd + '/' + options.args[0] : cwd
-            console.log(cwd)
+            console.log('cwd', cwd)
+            console.log('path', path)
             if (path === cwd) {
                 const dirEmpty = await fs.readdirSync(cwd).length === 0
                 if (!dirEmpty) {
