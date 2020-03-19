@@ -32,7 +32,7 @@ module.exports = {
             stdio: 'inherit',
             cwd: path
         })
-        await execa.command(`npm i /home/me/dev/@strapux/packages/strapux`, {
+        await execa.command(`npm i strapux`, {
             stdio: 'inherit',
             cwd: path
         }).then(() => {
