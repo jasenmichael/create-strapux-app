@@ -7,10 +7,6 @@ To create a Strapux app using npx
 ```bash 
 npx create-strapux-app [my-strapux-project]
 ```
-or a fresh install (deletes existing my-strapux-project)
-```bash 
-npx create-strapux-app <my-strapux-project> --freshy-install
-```
 
 ```
 Usage: create-strapux-app [path]
