@@ -27,7 +27,7 @@ module.exports = {
             })
         }
 
-        console.log('Initiate Strapux app')
+        console.log('Init Strapux project')
         await execa.command(`npm init -y`, {
             stdio: 'ignore',
             cwd: path
@@ -45,7 +45,7 @@ module.exports = {
             if (options.oneclick) {
                 console.log(`Oneclick passed, sit back and roll one...`)
             }
-            console.log(`✨ Installing Strapux App in ${path === process.cwd() ? '.' : path}`)
+            console.log(`✨ Creating Strapux project in ${path === process.cwd() ? '.' : path}`)
             execa.command(cmd, {
                 stdio: 'inherit',
                 cwd: path
