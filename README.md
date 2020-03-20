@@ -5,7 +5,7 @@ more info about Strapux at https://github.com/jasenmichael/strapux
 
 To create a Strapux app using npx
 ```bash 
-npx create-strapux-app <my-strapux-project>
+npx create-strapux-app [my-strapux-project]
 ```
 or a fresh install (deletes existing my-strapux-project)
 ```bash 
