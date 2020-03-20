@@ -39,13 +39,13 @@ module.exports = {
             // create(path)
             const oneclick = `${options.oneclick ? '--oneclick' : ''}`
             // const cmd = `./node_modules/strapux/bin/strapux-cli.js --path=${path} ${opts}` 
-            const cmd = `./node_modules/.bin/strapux --path=${path} ${oneclick}`
+            const cmd = `./node_modules/.bin/strapux-cli --path=${path} ${oneclick}`
             // const cmd = `./node_modules/strapux-cli/bin/strapux-cli.js -h` 
-            console.clear()
-            if (options.oneclick) {
-                console.log(`Oneclick passed, sit back and roll one...`)
-            }
-            console.log(`✨ Creating Strapux project in ${path === process.cwd() ? '.' : path}`)
+            // console.clear()
+            // if (options.oneclick) {
+            //     console.log(`Oneclick passed, sit back and roll one...`)
+            // }
+            // console.log(`✨ Creating Strapux project in ${path === process.cwd() ? '.' : path}`)
             execa.command(cmd, {
                 stdio: 'inherit',
                 cwd: path
