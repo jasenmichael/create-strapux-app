@@ -13,7 +13,7 @@ npx create-strapux-app <my-strapux-project> --freshy-install
 ```
 
 ```
-Usage: create-strapux-app install <path>
+Usage: create-strapux-app [path]
 
 Options:
   --oneclick            one click install
@@ -22,9 +22,9 @@ Options:
   -h, --help            output usage information
 
 Commands:
-  create-strapux-app <path> [options]  if no path provided use current directory.
+  create-strapux-app [path] [options]  if no path provided use current directory.
 or
-  npx create-strapux-app <path> [options]
+  npx create-strapux-app [path] [options]
 
 ```
 
